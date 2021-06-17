@@ -129,6 +129,13 @@ export default {
           apply: 'Übernehmen'
         }
       }
+    },
+    TodoList: {
+      buttons: {
+        todoList: {
+          tooltip: 'Todo-Liste'
+        }
+      }
     }
   }
 }
