@@ -116,8 +116,16 @@ export default class LinkWindow extends mixins(I18nMixin) {
   }
 
   apply () {
+    const URL_SCHEME_REGEXP = /^((?:f|ht)tps?:)?\/\//
+    const scheme = 'http'
+
+    let url = this.form.href
+    if (url && url.length && !URL_SCHEME_REGEXP.test(url)) {
+      url = (scheme) ? (scheme + '://' + url) : ('//' + url)
+    }
+
     this[PROPS.CONTEXT].commands[this[PROPS.NATIVE_EXTENSION_NAME]]({
-      href: this.form.href
+      href: url
     })
 
     this.close()

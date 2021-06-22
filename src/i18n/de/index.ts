@@ -104,9 +104,9 @@ export default {
         }
       },
       window: {
-        title: 'Link Kontrolle',
+        title: 'Link bearbeiten',
         form: {
-          hrefLabel: 'Href'
+          hrefLabel: 'URL'
         },
         buttons: {
           close: 'Schließen',
