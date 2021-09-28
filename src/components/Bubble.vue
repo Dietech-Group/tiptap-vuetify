@@ -53,6 +53,8 @@ export default class Menu extends mixins(I18nMixin) {
   readonly actions: ExtensionActionInterface[]
 
   mounted () {
+    const instance = this
+
     class RangeRef {
       range: any = null
       rect: any = null
@@ -68,7 +70,9 @@ export default class Menu extends mixins(I18nMixin) {
 
           this.updateRect(hide)
         }
-        const editorContent = document.querySelector('.tiptap-vuetify-editor .ProseMirror')!
+        // change to allow multiple instances to work on same page
+        //const editorContent = document.querySelector('.tiptap-vuetify-editor .ProseMirror')!
+        const editorContent = instance.$el.parentElement?.querySelector('.ProseMirror')!
 
         editorContent.addEventListener('mouseup', update)
         editorContent.addEventListener('input', update)
@@ -135,7 +139,10 @@ export default class Menu extends mixins(I18nMixin) {
     }
 
     setTimeout(() => {
-      const pop = document.querySelector<HTMLElement>('.tiptap-vuetify-editor-pop')!
+      // change to allow multiple instances to work on same page
+      //const pop = document.querySelector<HTMLElement>('.tiptap-vuetify-editor-pop')!
+      const pop = <HTMLElement>this.$el!
+
       const rangeRef: any = new RangeRef()
       const popper = new Popper(rangeRef, pop, {
         placement: 'top',
