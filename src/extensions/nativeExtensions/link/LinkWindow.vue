@@ -2,7 +2,7 @@
   <v-dialog
     :value="value"
     max-width="500px"
-    style="width: 100%;"
+    width="100%"
   >
     <v-card>
       <v-card-title>
