@@ -9,6 +9,7 @@
       :input-value="node.attrs.done"
       class="mr-2 mt-3 pt-1"
       hide-details
+      :disabled="!view.editable"
       @change="onChange"
     />
     <div
