@@ -137,9 +137,7 @@ export default {
     },
     Table: {
       buttons: {
-        table: {
-          tooltip: 'Table'
-        }
+        tooltip: 'Table'
       },
       window: {
         title: 'Tables',
