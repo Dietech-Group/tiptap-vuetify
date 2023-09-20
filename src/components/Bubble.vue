@@ -166,8 +166,8 @@ export default class Menu extends mixins(I18nMixin) {
 <style lang="stylus">
 .tiptap-vuetify-editor-pop {
   position: fixed;
-  z-index 1;
-  opacity: 0.9 !important
+  z-index: 1;
+  opacity: 0.9 !important;
   transition: transform 100ms ease-in-out;
 
   .tiptap-vuetify-editor-pop__popper {
@@ -182,12 +182,12 @@ export default class Menu extends mixins(I18nMixin) {
     color: white;
     line-height: 44px;
     display: inline-block;
-    visibility: hidden
+    visibility: hidden;
     opacity: 0;
     pointer-events: none;
 
     &--visible {
-      visibility: visible
+      visibility: visible;
       pointer-events: auto;
       animation: pop-upwards 180ms forwards linear;
       animation-delay: 0.2s;
