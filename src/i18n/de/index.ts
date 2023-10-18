@@ -122,7 +122,12 @@ export default {
       window: {
         title: 'Bild hinzufügen',
         form: {
-          sourceLink: 'Bild URL'
+          sourceLink: 'Bild URL',
+          altText: 'Alternativtext',
+          addImage: 'Bild hinzufügen'
+        },
+        imageUpload: {
+          instruction: 'Wählen Sie eine oder mehrere Dateien aus oder ziehen Sie diese hierher.'
         },
         buttons: {
           close: 'Schließen',
