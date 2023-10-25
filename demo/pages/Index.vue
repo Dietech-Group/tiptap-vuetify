@@ -81,6 +81,7 @@ export default {
     `
   }),
   async created () {
+    // add CustomImage
     const {
       Heading, Bold, Italic, Strike, Underline, Code, CodeBlock, Paragraph, BulletList, OrderedList, ListItem,
       Link, Blockquote, HardBreak, HorizontalRule, History, Image, TodoList, TodoItem, Table, TableCell, TableHeader,
@@ -88,6 +89,12 @@ export default {
     } = await MAIN_MODULE
 
     this.extensions = [
+      // [CustomImage, {
+      //     options: {
+      //         maxFileSize: 20971520,
+      //         filterErrorFunc: (type, file) => { console.log(type, file) }
+      //     }
+      // }],
       MyCustomExtension,
       [Table, {
         options: {
