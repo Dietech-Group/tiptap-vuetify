@@ -58,3 +58,5 @@ export { default as Table } from '~/extensions/nativeExtensions/table/Table'
 export { default as TableCell } from '~/extensions/nativeExtensions/table/TableCell'
 export { default as TableHeader } from '~/extensions/nativeExtensions/table/TableHeader'
 export { default as TableRow } from '~/extensions/nativeExtensions/table/TableRow'
+
+export { default as CustomImage } from '~/extensions/nativeExtensions/CustomImage/CustomImage'
