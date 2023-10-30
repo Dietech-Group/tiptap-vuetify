@@ -65,7 +65,7 @@ export default class CustomImageSelector {
             .catch(error => console.error(error))
         }
       })
-      .catch(error => console.error((error)))
+      .catch(() => {})
   }
 
   async readFiles (files: File[]): Promise<ImageSource[]> {
