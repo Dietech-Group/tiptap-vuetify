@@ -68,6 +68,7 @@ export default class ImageUploadArea extends mixins(I18nMixin) {
     })
   }
   filesSelected (files: HTMLInputElement['files']) {
+    if (!files) return;
     [...files].forEach(file => {
       const reader = new FileReader()
       reader.addEventListener('load', readerEvent => {
