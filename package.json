@@ -1,6 +1,6 @@
 {
   "name": "tiptap-vuetify",
-  "version": "2.24.0-0.0.1",
+  "version": "2.24.0-dietech-1",
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "popper.js": "^1.16.1",
-    "tiptap": "^1.16.2",
+    "tiptap": "https://gitpkg.vercel.app/Dietech-Group/tiptap/packages/tiptap?e7160b6d2de89a92e18e4c2a5442b3229b05b6f9",
     "tiptap-extensions": "^1.14.0"
   },
   "devDependencies": {
