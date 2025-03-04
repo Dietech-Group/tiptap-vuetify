@@ -1,12 +1,12 @@
 {
   "name": "tiptap-vuetify",
-  "version": "2.24.0-dietech-1",
+  "version": "2.24.0-dietech-2",
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",
     "dev": "vue-cli-service serve ./demo/main.js",
     "build": "rollup -c --environment BUILD:production",
-    "build-watch": "rollup -w -c",
+    "build-watch": "rollup -w -c --environment BUILD:production",
     "lint": "eslint ./src --ext .ts,.js,.vue --ignore-path .gitignore",
     "lint-fix": "yarn lint --fix"
   },

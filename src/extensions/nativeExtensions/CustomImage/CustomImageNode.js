@@ -1,5 +1,6 @@
 import { Node, Plugin } from 'tiptap'
 import { filterImages } from './CustomImageHelper'
+import CustomImageView from './CustomImageView.vue'
 
 export default class CustomImageNode extends Node {
   constructor (options) {
@@ -22,6 +23,9 @@ export default class CustomImageNode extends Node {
         },
         title: {
           default: null
+        },
+        highResSrc: {
+          default: null
         }
       },
       group: 'inline',
@@ -32,12 +36,25 @@ export default class CustomImageNode extends Node {
           getAttrs: dom => ({
             src: dom.getAttribute('src'),
             title: dom.getAttribute('title'),
-            alt: dom.getAttribute('alt')
+            alt: dom.getAttribute('alt'),
+            highResSrc: dom.getAttribute('data-high-res-src')
           })
         }
       ],
-      toDOM: node => ['img', node.attrs]
+      toDOM: node => [
+        'img',
+        {
+          'src': node.attrs.src,
+          'title': node.attrs.title,
+          'alt': node.attrs.alt,
+          'data-high-res-src': node.attrs.highResSrc
+        }
+      ]
     }
+  }
+
+  get view () {
+    return CustomImageView
   }
 
   commands ({ type }) {
