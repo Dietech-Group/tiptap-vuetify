@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { Component } from 'vue-property-decorator'
-import { getMsg } from '~/i18n/index.ts'
+import { getMsg } from '~/i18n/index'
 
 const namespace = '$i18n'
 

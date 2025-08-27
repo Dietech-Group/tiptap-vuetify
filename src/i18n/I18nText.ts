@@ -1,4 +1,4 @@
-import { getMsg } from '~/i18n/index.ts'
+import { getMsg } from '~/i18n/index'
 
 export default class I18nText {
   text: string

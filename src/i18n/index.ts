@@ -21,7 +21,7 @@ import sk from './sk'
 import fi from './fi'
 
 import ConsoleLogger from '~/logging/ConsoleLogger'
-import { TiptapVuetifyPlugin } from '~/main'
+import TiptapVuetifyPlugin from '~/TiptapVuetifyPlugin'
 
 export const defaultLanguage = 'en'
 export const dictionary = {

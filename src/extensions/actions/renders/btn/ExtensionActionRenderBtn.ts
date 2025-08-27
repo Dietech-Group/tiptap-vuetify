@@ -1,5 +1,4 @@
-import ExtensionActionRenderBtnOptionsInterface
-  from '~/extensions/actions/renders/btn/ExtensionActionRenderBtnOptionsInterface'
+import type { ExtensionActionRenderBtnOptionsInterface } from '~/extensions/actions/renders/btn/ExtensionActionRenderBtnOptionsInterface'
 
 type OptionalOptionsType = 'onClick' | 'isActive'
 

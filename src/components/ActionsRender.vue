@@ -19,7 +19,7 @@ import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 import ExtensionActionRenderBtnComponent from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn.vue'
-import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn.ts'
+import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn'
 import { Editor } from 'tiptap'
 
 export const PROPS = {

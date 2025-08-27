@@ -6,7 +6,7 @@ import AbstractExtension from '~/extensions/AbstractExtension'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 import LinkWindow from '~/extensions/nativeExtensions/link/LinkWindow.vue'
 import Vue from 'vue'
-import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn.ts'
+import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn'
 
 export default class Link extends AbstractExtension {
   constructor (options) {

@@ -2,7 +2,7 @@ import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
 import AbstractExtension from '~/extensions/AbstractExtension'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 import { VuetifyIconsGroups } from '~/configs/theme'
-import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn.ts'
+import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn'
 
 // A class must inherit from an abstract class
 export default class MyCustomExtension extends AbstractExtension {

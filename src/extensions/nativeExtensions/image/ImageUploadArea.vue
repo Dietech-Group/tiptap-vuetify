@@ -68,7 +68,7 @@ export default class ImageUploadArea extends mixins(I18nMixin) {
     })
   }
   filesSelected (files: HTMLInputElement['files']) {
-    [...files].forEach(file => {
+    [...(files || [])].forEach(file => {
       const reader = new FileReader()
       reader.addEventListener('load', readerEvent => {
         // TODO URL.createObjectURL(file) and upload

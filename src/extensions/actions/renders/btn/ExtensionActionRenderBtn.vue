@@ -31,7 +31,7 @@
 import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import { Editor } from 'tiptap'
-import ExtensionActionRenderBtnOptionsInterface from './ExtensionActionRenderBtnOptionsInterface'
+import type { ExtensionActionRenderBtnOptionsInterface } from './ExtensionActionRenderBtnOptionsInterface'
 import TextIcon from '~/extensions/nativeExtensions/icons/TextIcon'
 import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
 import IconInterface from '~/extensions/nativeExtensions/icons/IconInterface'

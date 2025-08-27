@@ -3,7 +3,7 @@ import TextIcon from '~/extensions/nativeExtensions/icons/TextIcon'
 import { VuetifyIconsGroups } from '~/configs/theme'
 import I18nText from '~/i18n/I18nText'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
-import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn.ts'
+import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn'
 import AbstractExtension from '~/extensions/AbstractExtension'
 
 export default class Heading extends AbstractExtension {

@@ -5,7 +5,7 @@ import I18nText from '~/i18n/I18nText'
 import AbstractExtension from '~/extensions/AbstractExtension'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 import Vue from 'vue'
-import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn.ts'
+import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn'
 import TableWindow from '~/extensions/nativeExtensions/table/TableWindow.vue'
 
 export default class Table extends AbstractExtension {
@@ -19,7 +19,7 @@ export default class Table extends AbstractExtension {
     return [
       {
         render: new ExtensionActionRenderBtn({
-          tooltip: new I18nText('extensions.Table.buttons.tooltip'),
+          tooltip: new I18nText('extensions.Table.buttons.table.tooltip'),
           icons: {
             [VuetifyIconsGroups.md]: new VuetifyIcon('table'),
             [VuetifyIconsGroups.fa]: new VuetifyIcon('fas fa-table'),
