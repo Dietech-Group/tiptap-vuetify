@@ -10,10 +10,10 @@
           'v-btn--active': $props[PROPS.OPTIONS].isActive($props[PROPS.EDITOR])
         }"
         :dark="$props[PROPS.DARK]"
-        small
-        icon
         v-on="on"
         @click="options.onClick({ context: $props[PROPS.CONTEXT], editor: $props[PROPS.EDITOR] })"
+        small
+        icon
       >
         <component
           :is="isTextIcon ? 'b' : isVuetifyIcon ? 'v-icon' : null"
@@ -49,7 +49,7 @@ export const PROPS = {
 
 @Component({
   components: { VTooltip, VBtn, VIcon }
-})
+  })
 export default class ExtensionActionRenderBtn extends Vue {
   @Prop({ type: Boolean, default: false })
   readonly [PROPS.DISABLED]: boolean

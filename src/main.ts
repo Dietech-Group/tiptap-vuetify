@@ -3,7 +3,7 @@ import TiptapVuetifyPlugin from './TiptapVuetifyPlugin'
 
 export * from '~/extensions/nativeExtensions/index'
 export { TiptapVuetify }
-export { TiptapVuetifyPlugin } 
+export { TiptapVuetifyPlugin }
 
 // авто установка (полезно если ставится через CDN)
 ;(function autoInstall () {

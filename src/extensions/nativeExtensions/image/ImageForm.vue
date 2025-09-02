@@ -23,7 +23,7 @@ import EVENTS from '~/extensions/nativeExtensions/image/events'
 
 @Component({
   components: { VTextField }
-})
+  })
 export default class ImageForm extends mixins(I18nMixin) {
   form: {
     src: null | string

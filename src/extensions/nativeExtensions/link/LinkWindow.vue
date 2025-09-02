@@ -12,8 +12,8 @@
         <v-spacer />
 
         <v-btn
-          icon
           @click="close"
+          icon
         >
           <v-icon>{{ COMMON_ICONS.close[$tiptapVuetify.iconsGroup] }}</v-icon>
         </v-btn>
@@ -33,8 +33,8 @@
       </v-card-text>
       <v-card-actions>
         <v-btn
-          text
           @click="close"
+          text
         >
           {{ $i18n.getMsg('extensions.Link.window.buttons.close') }}
         </v-btn>
@@ -42,8 +42,8 @@
         <v-btn
           :disabled="isDisabled"
           :color="isRemove ? 'error' : 'primary'"
-          text
           @click="apply"
+          text
         >
           {{ $i18n.getMsg('extensions.Link.window.buttons.' + (isRemove ? 'remove' : 'apply')) }}
         </v-btn>
@@ -69,29 +69,29 @@ export const PROPS = {
 
 @Component({
   components: { VDialog, VCard, VCardTitle, VCardText, VCardActions, VBtn, VSpacer, VIcon, VTextField }
-})
+  })
 export default class LinkWindow extends mixins(I18nMixin) {
   @Prop({
     type: Boolean,
     default: false
-  })
+    })
   readonly [PROPS.VALUE]: boolean
 
   @Prop({
     type: String,
     required: true
-  })
+    })
   readonly [PROPS.NATIVE_EXTENSION_NAME]: string
 
   @Prop({
     type: Object,
     required: true
-  })
+    })
   readonly [PROPS.EDITOR]: any
 
   @Prop({
     type: String
-  })
+    })
   readonly [PROPS.HREF]: null | string
 
   readonly COMMON_ICONS = COMMON_ICONS

@@ -12,8 +12,8 @@
         <v-spacer />
 
         <v-btn
-          icon
           @click="close"
+          icon
         >
           <v-icon>{{ COMMON_ICONS.close[$tiptapVuetify.iconsGroup] }}</v-icon>
         </v-btn>
@@ -34,15 +34,15 @@
       </v-card-text>
       <v-card-actions>
         <v-btn
-          text
           @click="close"
+          text
         >
           {{ $i18n.getMsg('extensions.Table.window.buttons.close') }}
         </v-btn>
 
         <v-btn
-          text
           @click="apply"
+          text
         >
           {{ $i18n.getMsg('extensions.Table.window.buttons.apply') }}
         </v-btn>
@@ -81,30 +81,30 @@ export const PROPS = {
 
 @Component({
   components: { VRow, VCol, VDialog, VCard, VCardTitle, VCardText, VCardActions, VBtn, VSpacer, VIcon, VTextField, VCheckbox }
-})
+  })
 export default class TableWindow extends mixins(I18nMixin) {
   @Prop({
     type: Boolean,
     default: false
-  })
+    })
   readonly [PROPS.VALUE]: boolean
 
   @Prop({
     type: String,
     required: true
-  })
+    })
   readonly [PROPS.NATIVE_EXTENSION_NAME]: string
 
   @Prop({
     type: Object,
     required: true
-  })
+    })
   readonly [PROPS.EDITOR]: any
 
   @Prop({
     type: Boolean,
     required: false
-  })
+    })
   readonly [PROPS.IMAGE_SOURCES_OVERRIDE]: any
 
   readonly COMMON_ICONS = COMMON_ICONS
@@ -121,7 +121,7 @@ export default class TableWindow extends mixins(I18nMixin) {
       cols: this.form.colsCount,
       withHeaderRow: this.form.withHeaderRow
     }).run()
-    
+
     this.close()
   }
 

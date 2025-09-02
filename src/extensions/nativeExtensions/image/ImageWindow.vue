@@ -1,4 +1,4 @@
-  <template>
+<template>
   <v-dialog
     :value="value"
     max-width="500px"
@@ -12,8 +12,8 @@
         <v-spacer />
 
         <v-btn
-          icon
           @click="close"
+          icon
         >
           <v-icon>{{ COMMON_ICONS.close[$tiptapVuetify.iconsGroup] }}</v-icon>
         </v-btn>
@@ -37,10 +37,10 @@
                   class="text-right"
                 >
                   <v-btn
+                    @click="removeSource(source)"
                     icon
                     small
                     dark
-                    @click="removeSource(source)"
                   >
                     <v-icon small>
                       close
@@ -70,24 +70,24 @@
           >
             <component
               :is="imageTab.component"
-              class="pa-4"
               @select-file="onFileSelect"
+              class="pa-4"
             />
           </v-tab-item>
         </template>
       </v-tabs>
       <v-card-actions>
         <v-btn
-          text
           @click="close"
+          text
         >
           {{ $i18n.getMsg('extensions.Image.window.buttons.close') }}
         </v-btn>
 
         <v-btn
           :disabled="isDisabled"
-          text
           @click="apply"
+          text
         >
           {{ $i18n.getMsg('extensions.Image.window.buttons.apply') }}
         </v-btn>
@@ -117,36 +117,36 @@ export const PROPS = {
 
 @Component({
   components: { VRow, VCol, VExpandTransition, ImageForm, ImageUploadArea, VImg, VDialog, VCard, VCardTitle, VCardText, VCardActions, VBtn, VSpacer, VIcon, VTextField, VTabs, VTab, VTabsSlider, VTabItem, VTabsItems }
-})
+  })
 export default class ImageWindow extends mixins(I18nMixin) {
   @Prop({
     type: Boolean,
     default: false
-  })
+    })
   readonly [PROPS.VALUE]: boolean
 
   @Prop({
     type: String,
     required: true
-  })
+    })
   readonly [PROPS.NATIVE_EXTENSION_NAME]: string
 
   @Prop({
     type: Object,
     required: true
-  })
+    })
   readonly [PROPS.EDITOR]: any
 
   @Prop({
     type: Array,
     required: false
-  })
+    })
   readonly [PROPS.IMAGE_SOURCES]: any
 
   @Prop({
     type: Boolean,
     required: false
-  })
+    })
   readonly [PROPS.IMAGE_SOURCES_OVERRIDE]: any
 
   readonly COMMON_ICONS = COMMON_ICONS
@@ -211,7 +211,7 @@ export default class ImageWindow extends mixins(I18nMixin) {
 
   apply () {
     this[PROPS.EDITOR].chain().focus().insertContent(
-      this.previewSources.map(source => { return { type: 'image', attrs: source}})
+      this.previewSources.map(source => { return { type: 'image', attrs: source } })
     ).run()
 
     this.close()

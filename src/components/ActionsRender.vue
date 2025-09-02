@@ -30,9 +30,9 @@ export const PROPS = {
 
 @Component({
   components: {
-    'action-btn': ExtensionActionRenderBtnComponent
+  'action-btn': ExtensionActionRenderBtnComponent
   }
-})
+  })
 export default class ActionsRender extends Vue {
   @Prop({ type: Object, required: true })
   readonly [PROPS.EDITOR]: Editor
@@ -43,13 +43,13 @@ export default class ActionsRender extends Vue {
   @Prop({
     type: Array,
     default: () => []
-  })
+    })
   readonly [PROPS.ACTIONS]: ExtensionActionInterface[]
 
   @Prop({
     type: Boolean,
     default: false
-  })
+    })
   readonly [PROPS.DARK]: boolean
 
   PROPS = PROPS

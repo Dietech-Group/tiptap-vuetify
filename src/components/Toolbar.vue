@@ -23,17 +23,16 @@ import { Editor } from '@tiptap/vue-2'
 import toolbarConfig from '~/configs/toolbar'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 import ActionsRender from '~/components/ActionsRender.vue'
-import { VToolbar } from 'vuetify/lib'
-import { VBtn, VIcon } from 'vuetify/lib'
+import { VToolbar, VBtn, VIcon } from 'vuetify/lib'
 
 @Component({
   components: {
-    ActionsRender,
-    VToolbar,
-    VBtn,
-    VIcon
+  ActionsRender,
+  VToolbar,
+  VBtn,
+  VIcon
   }
-})
+  })
 export default class Toolbar extends Vue {
   @Prop({ type: Boolean, default: false })
   readonly disabled: boolean
@@ -44,13 +43,13 @@ export default class Toolbar extends Vue {
   @Prop({
     type: Array,
     default: () => []
-  })
+    })
   readonly actions: ExtensionActionInterface[]
 
   @Prop({
     type: [Array, Object],
     default: () => ({})
-  })
+    })
   readonly toolbarAttributes!: any
 
   readonly toolbarConfig = toolbarConfig

@@ -1,10 +1,10 @@
 <template>
   <div
     v-if="editor"
-    class="tiptap-vuetify-editor"
     :class="{
       'tiptap-vuetify-editor--disabled': $props[PROPS.DISABLED]
     }"
+    class="tiptap-vuetify-editor"
   >
     <bubble
       v-if="availableActions.bubbleMenu.length && editor.options.editable"
@@ -31,8 +31,8 @@
           #default="scopedSlot"
         >
           <slot
-            name="toolbar"
             v-bind="scopedSlot"
+            name="toolbar"
           />
         </template>
       </toolbar>
@@ -42,10 +42,10 @@
       <editor-content
         :editor="editor"
         :style="contentDynamicStyles"
-        class="tiptap-vuetify-editor__content"
         :class="{
           'tiptap-vuetify-editor__content--disabled': $props[PROPS.DISABLED]
         }"
+        class="tiptap-vuetify-editor__content"
       />
 
       <slot name="footer" />
@@ -71,12 +71,12 @@ import AbstractExtensionInterface from '~/extensions/AbstractExtensionInterface'
 
 @Component({
   components: {
-    Bubble,
-    EditorContent,
-    Toolbar,
-    VCard
+  Bubble,
+  EditorContent,
+  Toolbar,
+  VCard
   }
-})
+  })
 export default class TiptapVuetify extends Vue {
   @Prop({ type: Boolean, default: false })
   readonly [PROPS.DISABLED]: boolean
@@ -93,7 +93,7 @@ export default class TiptapVuetify extends Vue {
   @Prop({
     type: Object,
     default: () => ({})
-  })
+    })
   readonly [PROPS.CARD_PROPS]: Record<string, any>
 
   @Prop({ type: String, default: 'html' })
@@ -102,25 +102,25 @@ export default class TiptapVuetify extends Vue {
   @Prop({
     type: [Array, Object],
     default: () => ({})
-  })
+    })
   readonly [PROPS.TOOLBAR_ATTRIBUTES]: Record<string, any>
 
   @Prop({
     type: Object,
     default: () => ({})
-  })
+    })
   readonly [PROPS.EDITOR_PROPERTIES]: Record<string, any>
 
   @Prop({
     type: Array,
     default: () => []
-  })
+    })
   readonly [PROPS.NATIVE_EXTENSIONS]: any[]
 
   @Prop({
     type: String,
     default: EDITOR_TYPES_ENUM.card
-  })
+    })
   readonly [PROPS.TYPE]: EDITOR_TYPES_ENUM
 
   @Prop({ type: [String, Number] })
@@ -442,5 +442,5 @@ export default class TiptapVuetify extends Vue {
 
       ul[data-type="taskList"]
         margin: 0
-  
+
 </style>

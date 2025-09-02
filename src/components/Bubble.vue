@@ -1,6 +1,14 @@
 <template>
-  <bubble-menu :editor="editor" :tippy-options="{ zIndex: 200 }">
-    <v-sheet rounded elevation="2" color="grey lighten-4" class="bubble-menu">
+  <bubble-menu
+    :editor="editor"
+    :tippy-options="{ zIndex: 200 }"
+  >
+    <v-sheet
+      rounded
+      elevation="2"
+      color="grey lighten-4"
+      class="bubble-menu"
+    >
       <actions-render
         :actions="actions"
         :editor="editor"
@@ -20,11 +28,11 @@ import { VSheet } from 'vuetify/lib'
 
 @Component({
   components: {
-    ActionsRender,
-    BubbleMenu,
-    VSheet
+  ActionsRender,
+  BubbleMenu,
+  VSheet
   }
-})
+  })
 export default class Menu extends mixins(I18nMixin) {
   @Prop({ type: Object, required: true })
   readonly editor!: Editor
@@ -32,7 +40,7 @@ export default class Menu extends mixins(I18nMixin) {
   @Prop({
     type: Array,
     default: () => []
-  })
+    })
   readonly actions: ExtensionActionInterface[]
 }
 </script>
