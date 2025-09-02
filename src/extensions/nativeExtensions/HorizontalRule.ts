@@ -1,4 +1,4 @@
-import { HorizontalRule as HorizontalRuleOriginal } from 'tiptap-extensions'
+import { HorizontalRule as HorizontalRuleOriginal } from '@tiptap/extension-horizontal-rule'
 import { VuetifyIconsGroups } from '~/configs/theme'
 import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
 import TextIcon from '~/extensions/nativeExtensions/icons/TextIcon'
@@ -23,7 +23,8 @@ export default class HorizontalRule extends AbstractExtension {
             [VuetifyIconsGroups.mdi]: new VuetifyIcon('mdi-minus'),
             [VuetifyIconsGroups.mdiSvg]: new VuetifyIcon('M19,13H5V11H19V13Z')
           },
-          nativeExtensionName: 'horizontal_rule'
+          nativeExtensionName: 'horizontalRule',
+          onClickCommand: 'setHorizontalRule'
         })
       }
     ]

@@ -1,4 +1,4 @@
-<template>
+  <template>
   <v-dialog
     :value="value"
     max-width="500px"
@@ -109,7 +109,6 @@ import { COMMON_ICONS } from '~/configs/theme'
 
 export const PROPS = {
   VALUE: 'value' as const,
-  CONTEXT: 'context' as const,
   EDITOR: 'editor' as const,
   IMAGE_SOURCES: 'imageSources' as const,
   IMAGE_SOURCES_OVERRIDE: 'imageSourcesOverride' as const,
@@ -131,12 +130,6 @@ export default class ImageWindow extends mixins(I18nMixin) {
     required: true
   })
   readonly [PROPS.NATIVE_EXTENSION_NAME]: string
-
-  @Prop({
-    type: Object,
-    required: true
-  })
-  readonly [PROPS.CONTEXT]: any
 
   @Prop({
     type: Object,
@@ -217,12 +210,11 @@ export default class ImageWindow extends mixins(I18nMixin) {
   }
 
   apply () {
-    this.previewSources.forEach(src => {
-      this[PROPS.CONTEXT].commands[this[PROPS.NATIVE_EXTENSION_NAME]](src)
-    })
+    this[PROPS.EDITOR].chain().focus().insertContent(
+      this.previewSources.map(source => { return { type: 'image', attrs: source}})
+    ).run()
 
     this.close()
-    this[PROPS.EDITOR].focus()
   }
 
   close () {

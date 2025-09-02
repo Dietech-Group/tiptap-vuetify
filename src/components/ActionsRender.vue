@@ -5,7 +5,6 @@
         v-if="isBtn(action)"
         :key="'action-button-' + i"
         :options="action.render.options"
-        :context="$props[PROPS.CONTEXT]"
         :editor="$props[PROPS.EDITOR]"
         :dark="$props[PROPS.DARK]"
         :disabled="$props[PROPS.DISABLED]"
@@ -20,12 +19,11 @@ import { Component, Prop } from 'vue-property-decorator'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 import ExtensionActionRenderBtnComponent from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn.vue'
 import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn'
-import { Editor } from 'tiptap'
+import { Editor } from '@tiptap/vue-2'
 
 export const PROPS = {
   EDITOR: 'editor' as const,
   ACTIONS: 'actions' as const,
-  CONTEXT: 'context' as const,
   DARK: 'dark' as const,
   DISABLED: 'disabled' as const
 }
@@ -47,11 +45,6 @@ export default class ActionsRender extends Vue {
     default: () => []
   })
   readonly [PROPS.ACTIONS]: ExtensionActionInterface[]
-
-  @Prop({
-    type: Object
-  })
-  readonly [PROPS.CONTEXT]: any
 
   @Prop({
     type: Boolean,

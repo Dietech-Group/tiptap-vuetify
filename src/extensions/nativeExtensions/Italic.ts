@@ -1,4 +1,4 @@
-import { Italic as ItalicOriginal } from 'tiptap-extensions'
+import { Italic as ItalicOriginal } from '@tiptap/extension-italic'
 import { VuetifyIconsGroups } from '~/configs/theme'
 import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
 import I18nText from '~/i18n/I18nText'
@@ -22,7 +22,8 @@ export default class Italic extends AbstractExtension {
             [VuetifyIconsGroups.mdi]: new VuetifyIcon('mdi-format-italic'),
             [VuetifyIconsGroups.mdiSvg]: new VuetifyIcon('M10,4V7H12.21L8.79,15H6V18H14V15H11.79L15.21,7H18V4H10Z')
           },
-          nativeExtensionName: 'italic'
+          nativeExtensionName: 'italic',
+          onClickCommand: 'toggleItalic'
         })
       }
     ]

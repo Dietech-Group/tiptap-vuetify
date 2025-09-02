@@ -1,4 +1,4 @@
-import { TableHeader as TableHeaderOriginal } from 'tiptap-extensions'
+import { TableHeader as TableHeaderOriginal } from '@tiptap/extension-table-header'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 import AbstractExtension from '~/extensions/AbstractExtension'
 

@@ -1,4 +1,4 @@
-import { ListItem as ListItemOriginal } from 'tiptap-extensions'
+import { ListItem as ListItemOriginal } from '@tiptap/extension-list-item'
 import AbstractExtension from '~/extensions/AbstractExtension'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 

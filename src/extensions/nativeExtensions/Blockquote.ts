@@ -1,4 +1,4 @@
-import { Blockquote as BlockquoteOriginal } from 'tiptap-extensions'
+import { Blockquote as BlockquoteOriginal } from '@tiptap/extension-blockquote'
 import { VuetifyIconsGroups } from '~/configs/theme'
 import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
 import I18nText from '~/i18n/I18nText'
@@ -22,7 +22,8 @@ export default class Blockquote extends AbstractExtension {
             [VuetifyIconsGroups.mdi]: new VuetifyIcon('mdi-format-quote-close'),
             [VuetifyIconsGroups.mdiSvg]: new VuetifyIcon('M14,17H17L19,13V7H13V13H16M6,17H9L11,13V7H5V13H8L6,17Z')
           },
-          nativeExtensionName: 'blockquote'
+          nativeExtensionName: 'blockquote',
+          onClickCommand: 'toggleBlockquote'
         })
       }
     ]

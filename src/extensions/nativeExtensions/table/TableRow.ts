@@ -1,4 +1,4 @@
-import { TableRow as TableRowOriginal } from 'tiptap-extensions'
+import { TableRow as TableRowOriginal } from '@tiptap/extension-table-row'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 import AbstractExtension from '~/extensions/AbstractExtension'
 

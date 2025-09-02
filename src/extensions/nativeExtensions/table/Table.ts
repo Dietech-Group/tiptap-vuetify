@@ -1,4 +1,4 @@
-import { Table as TableOriginal } from 'tiptap-extensions'
+import { Table as TableOriginal } from '@tiptap/extension-table'
 import { VuetifyIconsGroups } from '~/configs/theme'
 import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
 import I18nText from '~/i18n/I18nText'
@@ -29,14 +29,13 @@ export default class Table extends AbstractExtension {
             )
           },
           nativeExtensionName,
-          async onClick ({ context, editor }) {
+          async onClick ({ editor }) {
             const WindowComponent = Vue.extend(TableWindow)
             const instance = new WindowComponent({
               vuetify: Vue.prototype.tiptapVuetifyPlugin.vuetify,
               propsData: {
                 value: true,
                 nativeExtensionName,
-                context,
                 editor
               }
             })

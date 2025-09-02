@@ -4,16 +4,16 @@ import IconInterface from '~/extensions/nativeExtensions/icons/IconInterface'
 import { Editor } from 'tiptap'
 
 export interface ExtensionActionRenderBtnOptionsInterface {
-  tooltip: string | I18nText | ((context, options) => string | I18nText)
+  tooltip: string | I18nText | ((editor: Editor, options) => string | I18nText)
   icons: Partial<{
     [key in keyof typeof VuetifyIconsGroups]: IconInterface
   }>
-  onClick: ({ context, editor }: {
-    context: any
+  onClick: ({ editor }: {
     editor: Editor
   }) => any
+  onClickCommand?: string
   onClickOptions?: { [key: string]: any }
-  isActive: (...arg: any) => boolean
+  isActive: (editor: Editor) => boolean
   isActiveOptions?: { [key: string]: any }
   nativeExtensionName?: string
 }

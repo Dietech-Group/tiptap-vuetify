@@ -11,7 +11,7 @@ export default abstract class AbstractExtension implements AbstractExtensionInte
   protected constructor (protected options, protected extensionClass) {
     if (extensionClass) {
       // eslint-disable-next-line
-      this.nativeExtensionInstance = new extensionClass(options)
+      this.nativeExtensionInstance = extensionClass.configure(options)
     }
   }
 }

@@ -35,7 +35,7 @@ export default class MyCustomExtension extends AbstractExtension {
           // Is the button active? This affects the style of the button.
           isActive: () => {
             return !this.isEditable
-          }
+          }  
         })
       }
     ]

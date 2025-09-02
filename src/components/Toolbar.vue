@@ -1,48 +1,37 @@
 <template>
   <!-- Open/Closed principle https://css-tricks.com/creating-vue-js-component-instances-programmatically/ -->
   <div class="tiptap-vuetify-editor__toolbar">
-    <editor-menu-bar
-      v-slot="menuBarContext"
-      :editor="editor"
+    <v-toolbar
+      v-bind="{
+        ...toolbarConfig,
+        ...toolbarAttributes
+      }"
     >
-      <!-- :buttons="buttons" -->
-      <slot
-        name="default"
-        :isActive="menuBarContext.isActive"
-        :commands="menuBarContext.commands"
-      >
-        <v-toolbar
-          v-bind="{
-            ...toolbarConfig,
-            ...toolbarAttributes
-          }"
-        >
-          <actions-render
-            :actions="actions"
-            :context="menuBarContext"
-            :editor="editor"
-            :disabled="disabled"
-          />
-        </v-toolbar>
-      </slot>
-    </editor-menu-bar>
+      <actions-render
+        :actions="actions"
+        :editor="editor"
+        :disabled="disabled"
+      />
+    </v-toolbar>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
-import { Editor, EditorMenuBar } from 'tiptap'
+import { Editor } from '@tiptap/vue-2'
 import toolbarConfig from '~/configs/toolbar'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 import ActionsRender from '~/components/ActionsRender.vue'
 import { VToolbar } from 'vuetify/lib'
+import { VBtn, VIcon } from 'vuetify/lib'
 
 @Component({
   components: {
     ActionsRender,
-    EditorMenuBar,
-    VToolbar
+    VToolbar,
+    VBtn,
+    VIcon
   }
 })
 export default class Toolbar extends Vue {

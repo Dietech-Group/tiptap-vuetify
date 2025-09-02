@@ -7,7 +7,7 @@
         :disabled="disabled"
         :class="{
           'tiptap-vuetify-editor__action-render-btn': true,
-          'v-btn--active': $props[PROPS.OPTIONS].isActive($props[PROPS.CONTEXT])
+          'v-btn--active': $props[PROPS.OPTIONS].isActive($props[PROPS.EDITOR])
         }"
         :dark="$props[PROPS.DARK]"
         small
@@ -30,7 +30,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
-import { Editor } from 'tiptap'
+import { Editor } from '@tiptap/vue-2'
 import type { ExtensionActionRenderBtnOptionsInterface } from './ExtensionActionRenderBtnOptionsInterface'
 import TextIcon from '~/extensions/nativeExtensions/icons/TextIcon'
 import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
@@ -60,7 +60,7 @@ export default class ExtensionActionRenderBtn extends Vue {
   @Prop({ type: Object, required: true })
   readonly [PROPS.OPTIONS]: ExtensionActionRenderBtnOptionsInterface
 
-  @Prop({ type: Object, required: true })
+  @Prop({ type: Object, default: () => { return {} } })
   readonly [PROPS.CONTEXT]: any
 
   @Prop({ type: Boolean, default: false })
@@ -92,7 +92,7 @@ export default class ExtensionActionRenderBtn extends Vue {
     const source = this.$props[PROPS.OPTIONS].tooltip
 
     if (typeof source === 'function') {
-      return source(this.$props[PROPS.CONTEXT], this.$props[PROPS.OPTIONS])
+      return source(this.$props[PROPS.EDITOR], this.$props[PROPS.OPTIONS])
     }
 
     return source

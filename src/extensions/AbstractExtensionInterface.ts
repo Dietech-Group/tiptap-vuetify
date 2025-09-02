@@ -1,4 +1,4 @@
-import { Editor, Extension } from 'tiptap'
+import { Editor, Extension } from '@tiptap/vue-2'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 
 export default interface AbstractExtensionInterface {

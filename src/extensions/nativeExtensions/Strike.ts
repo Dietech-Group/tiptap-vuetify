@@ -1,4 +1,4 @@
-import { Strike as StrikeOriginal } from 'tiptap-extensions'
+import { Strike as StrikeOriginal } from '@tiptap/extension-strike'
 import { VuetifyIconsGroups } from '~/configs/theme'
 import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
 import I18nText from '~/i18n/I18nText'
@@ -22,7 +22,8 @@ export default class Strike extends AbstractExtension {
             [VuetifyIconsGroups.mdi]: new VuetifyIcon('mdi-format-strikethrough'),
             [VuetifyIconsGroups.mdiSvg]: new VuetifyIcon('M3,14H21V12H3M5,4V7H10V10H14V7H19V4M10,19H14V16H10V19Z')
           },
-          nativeExtensionName: 'strike'
+          nativeExtensionName: 'strike',
+          onClickCommand: 'toggleStrike'
         })
       }
     ]

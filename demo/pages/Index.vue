@@ -96,8 +96,8 @@ export default {
       }],
       TableCell,
       TableHeader,
-      TodoList,
       TableRow,
+      TodoList,
       [TodoItem, {
         options: {
           nested: true

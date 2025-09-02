@@ -1,4 +1,4 @@
-import { Link as LinkOriginal } from 'tiptap-extensions'
+import { Link as LinkOriginal } from '@tiptap/extension-link'
 import { VuetifyIconsGroups } from '~/configs/theme'
 import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
 import I18nText from '~/i18n/I18nText'
@@ -19,8 +19,8 @@ export default class Link extends AbstractExtension {
     return [
       {
         render: new ExtensionActionRenderBtn({
-          tooltip: (context, options) => new I18nText(
-            options.isActive(context)
+          tooltip: (editor, options) => new I18nText(
+            options.isActive(editor)
               ? 'extensions.Link.buttons.isActive.tooltip'
               : 'extensions.Link.buttons.notActive.tooltip'),
           icons: {
@@ -30,15 +30,15 @@ export default class Link extends AbstractExtension {
             [VuetifyIconsGroups.mdiSvg]: new VuetifyIcon('M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z')
           },
           nativeExtensionName,
-          onClick ({ context, editor }) {
-            const href = context.getMarkAttrs(nativeExtensionName).href
+          onClick ({ editor }) {
+            const href = editor.getAttributes(nativeExtensionName).href
+            
             const LinkWindowComponent = Vue.extend(LinkWindow)
             const instance = new LinkWindowComponent({
               vuetify: Vue.prototype.tiptapVuetifyPlugin.vuetify,
               propsData: {
                 value: true,
                 nativeExtensionName,
-                context,
                 editor,
                 href
               }

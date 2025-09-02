@@ -1,4 +1,4 @@
-import { HardBreak as HardBreakOriginal } from 'tiptap-extensions'
+import { HardBreak as HardBreakOriginal } from '@tiptap/extension-hard-break'
 import AbstractExtension from '~/extensions/AbstractExtension'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 

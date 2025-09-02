@@ -1,4 +1,4 @@
-import { CodeBlock as CodeBlockOriginal } from 'tiptap-extensions'
+import { CodeBlock as CodeBlockOriginal } from '@tiptap/extension-code-block'
 import { VuetifyIconsGroups } from '~/configs/theme'
 import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
 import I18nText from '~/i18n/I18nText'
@@ -23,7 +23,8 @@ export default class CodeBlock extends AbstractExtension {
             [VuetifyIconsGroups.mdi]: new VuetifyIcon('mdi-code-tags'),
             [VuetifyIconsGroups.mdiSvg]: new VuetifyIcon('M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z')
           },
-          nativeExtensionName: 'code_block'
+          nativeExtensionName: 'codeBlock',
+          onClickCommand: 'toggleCodeBlock'
         })
       }
     ]

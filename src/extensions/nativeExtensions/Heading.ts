@@ -1,4 +1,4 @@
-import { Heading as HeadingOriginal } from 'tiptap-extensions'
+import { Heading as HeadingOriginal } from '@tiptap/extension-heading'
 import TextIcon from '~/extensions/nativeExtensions/icons/TextIcon'
 import { VuetifyIconsGroups } from '~/configs/theme'
 import I18nText from '~/i18n/I18nText'
@@ -23,22 +23,9 @@ export default class Heading extends AbstractExtension {
         },
         nativeExtensionName: 'heading',
         onClickOptions: { level },
-        isActiveOptions: { level }
+        isActiveOptions: { level },
+        onClickCommand: 'toggleHeading'
       })
     }))
   }
-
-  // get availableButtons () {
-  //   return this.options.levels.map(level => ({
-  //     name: 'heading',
-  //     tooltip: new I18nText('extensions.Heading.buttons.heading.tooltip', { level }),
-  //     icons: {
-  //       [VuetifyIconsGroups.md]: new TextIcon('H' + level),
-  //       [VuetifyIconsGroups.fa]: new TextIcon('H' + level),
-  //       [VuetifyIconsGroups.mdi]: new TextIcon('H' + level)
-  //     },
-  //     clickOptions: { level },
-  //     isActiveOptions: { level }
-  //   }))
-  // }
 }

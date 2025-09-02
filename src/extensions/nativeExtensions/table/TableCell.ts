@@ -1,4 +1,4 @@
-import { TableCell as TableCellOriginal } from 'tiptap-extensions'
+import { TableCell as TableCellOriginal } from '@tiptap/extension-table-cell'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 import AbstractExtension from '~/extensions/AbstractExtension'
 

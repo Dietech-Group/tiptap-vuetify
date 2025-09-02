@@ -73,7 +73,6 @@ import { COMMON_ICONS } from '~/configs/theme'
 
 export const PROPS = {
   VALUE: 'value' as const,
-  CONTEXT: 'context' as const,
   EDITOR: 'editor' as const,
   IMAGE_SOURCES: 'imageSources' as const,
   IMAGE_SOURCES_OVERRIDE: 'imageSourcesOverride' as const,
@@ -100,12 +99,6 @@ export default class TableWindow extends mixins(I18nMixin) {
     type: Object,
     required: true
   })
-  readonly [PROPS.CONTEXT]: any
-
-  @Prop({
-    type: Object,
-    required: true
-  })
   readonly [PROPS.EDITOR]: any
 
   @Prop({
@@ -123,13 +116,13 @@ export default class TableWindow extends mixins(I18nMixin) {
   }
 
   apply () {
-    this[PROPS.CONTEXT].commands.createTable({
-      rowsCount: this.form.rowsCount,
-      colsCount: this.form.colsCount,
+    this[PROPS.EDITOR].chain().focus().insertTable({
+      rows: this.form.rowsCount,
+      cols: this.form.colsCount,
       withHeaderRow: this.form.withHeaderRow
-    })
+    }).run()
+    
     this.close()
-    this[PROPS.EDITOR].focus()
   }
 
   close () {

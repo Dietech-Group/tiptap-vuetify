@@ -55,12 +55,15 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Editor, EditorContent } from 'tiptap'
+import { Editor, EditorContent } from '@tiptap/vue-2'
 import Toolbar from '~/components/Toolbar.vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
 import { EVENTS, PROPS, EDITOR_TYPES_ENUM } from '~/const'
 import Bubble from '~/components/Bubble.vue'
-import { Placeholder } from 'tiptap-extensions'
+import { Document } from '@tiptap/extension-document'
+import { Paragraph } from '@tiptap/extension-paragraph'
+import { Text } from '@tiptap/extension-text'
+import { Placeholder } from '@tiptap/extension-placeholder'
 import { ExtensionActionRenderInEnum } from '~/extensions/actions/ExtensionActionRenderInEnum'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
 import { VCard } from 'vuetify/lib'
@@ -169,7 +172,7 @@ export default class TiptapVuetify extends Vue {
       return
     }
 
-    if (this.editor) this.editor.setContent(val)
+    if (this.editor) this.editor.commands.setContent(val)
   }
 
   mounted () {
@@ -216,15 +219,18 @@ export default class TiptapVuetify extends Vue {
       extensionsInstances.push(extension)
     })
     const extensions = [
+      Document,
+      Paragraph,
+      Text,
       ...this[PROPS.NATIVE_EXTENSIONS],
       ...nativeExtensionsInstances
     ]
 
     if (this[PROPS.PLACEHOLDER]) {
       // !!!!!!!!!!!!!!!!! TODO ONLY FOR TEST (update: не помню что это, возможно и не нужно убирать код ниже)
-      extensions.push(new Placeholder({
+      extensions.push(Placeholder.configure({
         emptyNodeClass: 'tiptap-vuetify-editor__paragraph--is-empty',
-        emptyNodeText: this[PROPS.PLACEHOLDER],
+        placeholder: this[PROPS.PLACEHOLDER],
         showOnlyWhenEditable: true
       }))
     }
@@ -264,9 +270,9 @@ export default class TiptapVuetify extends Vue {
     let output: any
 
     if (this[PROPS.OUTPUT_FORMAT] === 'html') {
-      output = info.getHTML()
+      output = info.editor.getHTML()
     } else {
-      output = info.getJSON()
+      output = info.editor.getJSON()
     }
 
     this.$emit(EVENTS.INPUT, output, info)
@@ -297,12 +303,14 @@ export default class TiptapVuetify extends Vue {
     &--disabled
       cursor: not-allowed
 
-  /* Элемент не обязательно содрежится в .tiptap-vuetify-editor, может использоваться для отображения результата
-  редактора в не редактора */
+  /* The element does not necessarily contain .tiptap-vuetify-editor, it can be used to display the result of the editor in a non-editor */
   .tiptap-vuetify-editor__content
     transition: all 2s
     overflow: auto !important
     padding: 5px
+
+    :first-child
+      margin-top: 0 !important
 
     a
       pointer-events: none
@@ -404,4 +412,35 @@ export default class TiptapVuetify extends Vue {
         right: 0
         bottom: 0
 
+    ul, ol
+      padding: 0 1rem
+      margin: 1.25rem 1rem 1.25rem 0.4rem
+
+      li p
+        margin-top: 0.25em !important
+        margin-bottom: 0.25em !important
+
+    ul[data-type="taskList"]
+      list-style: none
+      margin-left: 0
+      padding: 0
+
+      li
+        align-items: flex-start
+        display: flex
+
+        > label
+          flex: 0 0 auto
+          margin-right: 0.5rem
+          user-select: none
+
+        > div
+          flex: 1 1 auto
+
+      input[type="checkbox"]
+        cursor: pointer
+
+      ul[data-type="taskList"]
+        margin: 0
+  
 </style>

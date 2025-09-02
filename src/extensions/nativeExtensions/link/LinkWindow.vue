@@ -87,12 +87,6 @@ export default class LinkWindow extends mixins(I18nMixin) {
     type: Object,
     required: true
   })
-  readonly [PROPS.CONTEXT]: any
-
-  @Prop({
-    type: Object,
-    required: true
-  })
   readonly [PROPS.EDITOR]: any
 
   @Prop({
@@ -116,12 +110,15 @@ export default class LinkWindow extends mixins(I18nMixin) {
   }
 
   apply () {
-    this[PROPS.CONTEXT].commands[this[PROPS.NATIVE_EXTENSION_NAME]]({
-      href: this.form.href
-    })
+    if (this.isRemove) {
+      this[PROPS.EDITOR].chain().focus().unsetLink().run()
+    } else {
+      this[PROPS.EDITOR].chain().focus().setLink({
+        href: this.form.href
+      }).run()
+    }
 
     this.close()
-    this[PROPS.EDITOR].focus()
   }
 
   close () {

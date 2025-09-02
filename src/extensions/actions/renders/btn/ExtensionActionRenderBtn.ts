@@ -13,11 +13,13 @@ export default class ExtensionActionRenderBtn {
     const nativeExtensionName = options.nativeExtensionName!
 
     this.options = {
-      onClick ({ context }) {
-        context.commands[nativeExtensionName](options.onClickOptions)
+      onClick ({ editor }) {
+        if (options.onClickCommand) {
+          editor.chain().focus()[options.onClickCommand](options.onClickOptions).run()
+        }
       },
-      isActive ({ isActive }) {
-        return !!isActive[nativeExtensionName] && isActive[nativeExtensionName](options.isActiveOptions)
+      isActive (editor) {
+        return editor.isActive(nativeExtensionName, options.isActiveOptions)
       },
       ...options
     }

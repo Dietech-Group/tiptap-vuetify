@@ -1,14 +1,12 @@
 // @ts-ignore
-import { Node } from 'tiptap'
-import { sinkListItem, splitToDefaultListItem, liftListItem } from 'tiptap-commands'
+import { Node } from '@tiptap/vue-2'
+// import { sinkListItem, splitToDefaultListItem, liftListItem } from '@tiptap/pm/commands'
 import TodoItemView from './TodoItemView.vue'
 
 export default class TodoItem extends Node {
   options
 
-  get name () {
-    return 'todo_item'
-  }
+  name: 'todo_item'
 
   get defaultOptions () {
     return {
@@ -54,9 +52,9 @@ export default class TodoItem extends Node {
 
   keys ({ type }) {
     return {
-      Enter: splitToDefaultListItem(type),
-      Tab: this.options.nested ? sinkListItem(type) : () => {},
-      'Shift-Tab': liftListItem(type)
+      // Enter: splitToDefaultListItem(type),
+      // Tab: this.options.nested ? sinkListItem(type) : () => {},
+      // 'Shift-Tab': liftListItem(type)
     }
   }
 }
