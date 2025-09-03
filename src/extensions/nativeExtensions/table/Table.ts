@@ -19,7 +19,7 @@ export default class Table extends AbstractExtension {
     return [
       {
         render: new ExtensionActionRenderBtn({
-          tooltip: new I18nText('extensions.Table.buttons.table.tooltip'),
+          tooltip: new I18nText('extensions.Table.buttons.tooltip'),
           icons: {
             [VuetifyIconsGroups.md]: new VuetifyIcon('table'),
             [VuetifyIconsGroups.fa]: new VuetifyIcon('fas fa-table'),
