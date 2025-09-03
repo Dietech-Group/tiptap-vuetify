@@ -1,5 +1,6 @@
 import { Image, ImageOptions } from '@tiptap/extension-image'
 import { Plugin } from '@tiptap/pm/state'
+import { EditorView } from '@tiptap/pm/view'
 import { FileTypesType, MaxFileSizeType, FilterErrorFuncType, filterImages } from './ImageHelper'
 
 export interface ExtendedImageOptions extends Partial<ImageOptions> {
@@ -37,41 +38,44 @@ export const ExtendedImageExtension = Image.extend<ExtendedImageOptions>({
   addProseMirrorPlugins () {
     const options = this.options
 
+    const handleImageEvent = function (view: EditorView, event: Event, files: FileList | undefined, coordinates: any) {
+      if (!(files && files.length > 0)) {
+        return
+      }
+
+      event.preventDefault()
+
+      const images = filterImages(Array.from(files), options.fileTypes, options.maxFileSize, options.filterErrorFunc)
+      if (images.length === 0) {
+        return
+      }
+
+      const { schema } = view.state
+
+      images.forEach(image => {
+        const reader = new FileReader()
+
+        reader.onload = readerEvent => {
+          if (readerEvent?.target?.result) {
+            const node = schema.nodes.image.create({
+              src: readerEvent.target.result
+            })
+            const transaction = coordinates ? view.state.tr.insert(coordinates.pos, node) : view.state.tr.replaceSelectionWith(node)
+            view.dispatch(transaction)
+          }
+        }
+        reader.readAsDataURL(image)
+      })
+    }
+
     const plugin = new Plugin({
       props: {
         handleDOMEvents: {
           drop (view, event) {
-            if (!(event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length > 0)) {
-              return
-            }
-
-            event.preventDefault()
-
-            const images = filterImages(Array.from(event.dataTransfer.files), options.fileTypes, options.maxFileSize, options.filterErrorFunc)
-            if (images.length === 0) {
-              return
-            }
-
-            const { schema } = view.state
-            const coordinates = view.posAtCoords({ left: event.clientX, top: event.clientY })
-            if (!coordinates) {
-              return
-            }
-
-            images.forEach(image => {
-              const reader = new FileReader()
-
-              reader.onload = readerEvent => {
-                if (readerEvent?.target?.result) {
-                  const node = schema.nodes.image.create({
-                    src: readerEvent.target.result
-                  })
-                  const transaction = view.state.tr.insert(coordinates.pos, node)
-                  view.dispatch(transaction)
-                }
-              }
-              reader.readAsDataURL(image)
-            })
+            handleImageEvent(view, event, event.dataTransfer?.files, view.posAtCoords({ left: event.clientX, top: event.clientY }))
+          },
+          paste (view, event) {
+            handleImageEvent(view, event, event.clipboardData?.files, null)
           }
         }
       }
