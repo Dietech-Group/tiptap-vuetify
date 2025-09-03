@@ -53,7 +53,7 @@ export default class ImageSelector {
           this.readFiles(filterImages(Array.from(files), this.fileTypes, this.maxFileSize, this.filterErrorFunc))
             .then(sources => {
               this.editor.chain().focus().insertContent(
-                sources.map(source => { return { type: 'image', attrs: source } })
+                sources.map(source => { return { type: 'customImage', attrs: source } })
               ).run()
             })
             .catch(error => console.error(error))

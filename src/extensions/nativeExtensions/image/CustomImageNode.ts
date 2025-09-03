@@ -1,5 +1,5 @@
-import { Image, ImageOptions } from '@tiptap/extension-image'
-import { Plugin } from '@tiptap/pm/state'
+import { Image as ImageOriginal, ImageOptions } from '@tiptap/extension-image'
+import { Plugin, PluginKey } from '@tiptap/pm/state'
 import { EditorView } from '@tiptap/pm/view'
 import { VueNodeViewRenderer } from '@tiptap/vue-2'
 import ImageView from './ImageView.vue'
@@ -28,7 +28,8 @@ export interface ExtendedImageOptions extends Partial<ImageOptions> {
   filterErrorFunc: FilterErrorFuncType
 }
 
-export const ExtendedImageExtension = Image.extend<ExtendedImageOptions>({
+export const CustomImageNode = ImageOriginal.extend<ExtendedImageOptions>({
+  name: 'customImage',
   addOptions () {
     return {
       ...this.parent?.(),
@@ -68,7 +69,7 @@ export const ExtendedImageExtension = Image.extend<ExtendedImageOptions>({
 
         reader.onload = readerEvent => {
           if (readerEvent?.target?.result) {
-            const node = schema.nodes.image.create({
+            const node = schema.nodes.customImage.create({
               src: readerEvent.target.result
             })
             const transaction = coordinates ? view.state.tr.insert(coordinates.pos, node) : view.state.tr.replaceSelectionWith(node)
@@ -80,6 +81,7 @@ export const ExtendedImageExtension = Image.extend<ExtendedImageOptions>({
     }
 
     const plugin = new Plugin({
+      key: new PluginKey('customImage'),
       props: {
         handleDOMEvents: {
           drop (view, event) {

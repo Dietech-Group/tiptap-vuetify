@@ -1,4 +1,4 @@
-import { ExtendedImageExtension } from './ExtendedImageExtension'
+import { CustomImageNode } from './CustomImageNode'
 import { VuetifyIconsGroups } from '~/configs/theme'
 import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
 import I18nText from '~/i18n/I18nText'
@@ -9,11 +9,11 @@ import ImageSelector from './ImageSelector'
 
 export default class Image extends AbstractExtension {
   constructor (options) {
-    super(options, ExtendedImageExtension)
+    super(options, CustomImageNode)
   }
 
   get availableActions (): ExtensionActionInterface[] {
-    const nativeExtensionName = 'image'
+    const nativeExtensionName = 'customImage'
     const options = this.options
 
     return [
