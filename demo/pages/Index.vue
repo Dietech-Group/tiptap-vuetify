@@ -44,6 +44,8 @@ export default {
     extensions: null,
     content: `
       <h1>Yay Headlines!</h1>
+      <img src="https://picsum.photos/seed/test1/100" alt="test image" title="Test Image from picsum">
+      <img src="https://picsum.photos/seed/test2/100" alt="test image with highres version" title="Test Image from picsum with highres version on click" data-high-res-src="https://picsum.photos/seed/test2/1000">
       <blockquote>Test quote.</blockquote>
       <p>All these <strong>cool tags</strong> are working now.</p>
       <p>

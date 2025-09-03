@@ -1,6 +1,8 @@
 import { Image, ImageOptions } from '@tiptap/extension-image'
 import { Plugin } from '@tiptap/pm/state'
 import { EditorView } from '@tiptap/pm/view'
+import { VueNodeViewRenderer } from '@tiptap/vue-2'
+import ImageView from './ImageView.vue'
 import { FileTypesType, MaxFileSizeType, FilterErrorFuncType, filterImages } from './ImageHelper'
 
 export interface ExtendedImageOptions extends Partial<ImageOptions> {
@@ -34,6 +36,15 @@ export const ExtendedImageExtension = Image.extend<ExtendedImageOptions>({
       maxFileSize: undefined,
       filterErrorFunc: undefined
     }
+  },
+  addAttributes () {
+    return {
+      ...this.parent?.(),
+      'data-high-res-src': null
+    }
+  },
+  addNodeView () {
+    return VueNodeViewRenderer(ImageView)
   },
   addProseMirrorPlugins () {
     const options = this.options
