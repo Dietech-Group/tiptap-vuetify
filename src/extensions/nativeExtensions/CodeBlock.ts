@@ -10,7 +10,7 @@ import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/Extension
 // TODO текст перед / после иконки. Сделать через массив: [new VuetifyIcon('code'), new TextForIcon('text')]
 export default class CodeBlock extends AbstractExtension {
   constructor (options) {
-    super(options, options.hasOwnProperty('lowlight') ? CodeBlockLowlightOriginal : CodeBlockOriginal)
+    super(options, options?.hasOwnProperty('lowlight') ? CodeBlockLowlightOriginal : CodeBlockOriginal)
   }
 
   get availableActions (): ExtensionActionInterface[] {
