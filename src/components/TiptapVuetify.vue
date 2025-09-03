@@ -90,37 +90,22 @@ export default class TiptapVuetify extends Vue {
   @Prop({ type: String })
   readonly [PROPS.PLACEHOLDER]: string
 
-  @Prop({
-    type: Object,
-    default: () => ({})
-    })
+  @Prop({type: Object, default: () => ({}) })
   readonly [PROPS.CARD_PROPS]: Record<string, any>
 
   @Prop({ type: String, default: 'html' })
   readonly [PROPS.OUTPUT_FORMAT]: string
 
-  @Prop({
-    type: [Array, Object],
-    default: () => ({})
-    })
+  @Prop({type: [Array, Object], default: () => ({}) })
   readonly [PROPS.TOOLBAR_ATTRIBUTES]: Record<string, any>
 
-  @Prop({
-    type: Object,
-    default: () => ({})
-    })
+  @Prop({ type: Object, default: () => ({}) })
   readonly [PROPS.EDITOR_PROPERTIES]: Record<string, any>
 
-  @Prop({
-    type: Array,
-    default: () => []
-    })
+  @Prop({ type: Array, default: () => [] })
   readonly [PROPS.NATIVE_EXTENSIONS]: any[]
 
-  @Prop({
-    type: String,
-    default: EDITOR_TYPES_ENUM.card
-    })
+  @Prop({ type: String, default: EDITOR_TYPES_ENUM.card })
   readonly [PROPS.TYPE]: EDITOR_TYPES_ENUM
 
   @Prop({ type: [String, Number] })
