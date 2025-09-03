@@ -12,8 +12,8 @@
         <v-spacer />
 
         <v-btn
-          @click="close"
           icon
+          @click="close"
         >
           <v-icon>{{ COMMON_ICONS.close[$tiptapVuetify.iconsGroup] }}</v-icon>
         </v-btn>
@@ -33,8 +33,8 @@
       </v-card-text>
       <v-card-actions>
         <v-btn
-          @click="close"
           text
+          @click="close"
         >
           {{ $i18n.getMsg('extensions.Link.window.buttons.close') }}
         </v-btn>
@@ -42,8 +42,8 @@
         <v-btn
           :disabled="isDisabled"
           :color="isRemove ? 'error' : 'primary'"
-          @click="apply"
           text
+          @click="apply"
         >
           {{ $i18n.getMsg('extensions.Link.window.buttons.' + (isRemove ? 'remove' : 'apply')) }}
         </v-btn>
@@ -113,8 +113,16 @@ export default class LinkWindow extends mixins(I18nMixin) {
     if (this.isRemove) {
       this[PROPS.EDITOR].chain().focus().unsetLink().run()
     } else {
+      const URL_SCHEME_REGEXP = /^((?:f|ht)tps?:)?\/\//
+      const scheme = 'http'
+
+      let url = this.form.href
+      if (url && url.length && !URL_SCHEME_REGEXP.test(url)) {
+        url = (scheme) ? (scheme + '://' + url) : ('//' + url)
+      }
+
       this[PROPS.EDITOR].chain().focus().setLink({
-        href: this.form.href
+        href: url
       }).run()
     }
 
