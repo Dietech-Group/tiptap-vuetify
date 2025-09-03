@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@tiptap/core": "2.26.1",
+    "@tiptap/extension-code-block-lowlight": "2.26.1",
     "@tiptap/extension-history": "^2.26.1",
     "@tiptap/extension-image": "^2.26.1",
     "@tiptap/extension-link": "^2.26.1",
@@ -54,6 +55,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^5.2.2",
+    "lowlight": "^3.3.0",
     "postcss-preset-env": "^6.6.0",
     "rollup": "^1.7.0",
     "rollup-plugin-alias": "^1.5.1",

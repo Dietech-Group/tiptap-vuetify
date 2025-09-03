@@ -9,6 +9,7 @@
     <tiptap-vuetify
       v-model="content"
       :extensions="extensions"
+      :native-extensions="nativeExtensions"
       placeholder="Write something …"
       @keydown="onkeydown"
     />
@@ -29,6 +30,14 @@ import { MAIN_MODULE } from '../config'
 import MyCustomExtension from '../MyCustomExtension'
 import FileSelector from '../Components/FileSelector'
 
+// import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+import { common, createLowlight } from 'lowlight'
+import dockerfile from 'highlight.js/lib/languages/dockerfile'
+import 'highlight.js/styles/stackoverflow-light.css'
+
+const lowlight = createLowlight(common)
+lowlight.register('dockerfile', dockerfile)
+
 export default {
   components: {
     TiptapVuetify: () => MAIN_MODULE.then(({ TiptapVuetify }) => TiptapVuetify)
@@ -42,6 +51,7 @@ export default {
     //   }
     // },
     extensions: null,
+    nativeExtensions: null,
     content: `
       <h1>Yay Headlines!</h1>
       <img src="https://picsum.photos/seed/test1/100" alt="test image" title="Test Image from picsum">
@@ -106,7 +116,11 @@ export default {
         }
       }],
       Code,
-      CodeBlock,
+      [CodeBlock, {
+        options: {
+          lowlight
+        }
+      }],
       HorizontalRule,
       Paragraph,
       History,
@@ -142,6 +156,12 @@ export default {
       [Link, {
         renderIn: 'bubbleMenu'
       }]
+    ]
+
+    this.nativeExtensions = [
+      // CodeBlockLowlight.configure({
+      //   lowlight
+      // })
     ]
   },
   methods: {

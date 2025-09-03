@@ -1,4 +1,5 @@
 import { CodeBlock as CodeBlockOriginal } from '@tiptap/extension-code-block'
+import { CodeBlockLowlight as CodeBlockLowlightOriginal } from '@tiptap/extension-code-block-lowlight'
 import { VuetifyIconsGroups } from '~/configs/theme'
 import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
 import I18nText from '~/i18n/I18nText'
@@ -9,7 +10,7 @@ import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/Extension
 // TODO текст перед / после иконки. Сделать через массив: [new VuetifyIcon('code'), new TextForIcon('text')]
 export default class CodeBlock extends AbstractExtension {
   constructor (options) {
-    super(options, CodeBlockOriginal)
+    super(options, options.hasOwnProperty('lowlight') ? CodeBlockLowlightOriginal : CodeBlockOriginal)
   }
 
   get availableActions (): ExtensionActionInterface[] {
