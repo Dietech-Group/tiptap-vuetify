@@ -135,6 +135,23 @@ export default {
         }
       }
     },
+    Table: {
+      buttons: {
+        tooltip: 'Tabelle'
+      },
+      window: {
+        title: 'Tabelle hinzufügen',
+        form: {
+          rowsCount: 'Zeilen',
+          colsCount: 'Spalten',
+          withHeaderRow: 'Mit Kopfzeile'
+        },
+        buttons: {
+          close: 'Schließen',
+          apply: 'Übernehmen'
+        }
+      }
+    },
     TodoList: {
       buttons: {
         todoList: {
