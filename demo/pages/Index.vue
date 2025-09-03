@@ -117,7 +117,8 @@ export default {
       OrderedList,
       [Image, {
         options: {
-          imageSources: [{ component: FileSelector, name: 'File Selector' }]
+          maxFileSize: 1048576,
+          filterErrorFunc: (type, file) => { console.log(type, file) }
         }
       }],
       [Heading, {

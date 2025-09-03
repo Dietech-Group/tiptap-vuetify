@@ -1,16 +1,15 @@
-import { Image as ImageOriginal } from '@tiptap/extension-image'
+import { ExtendedImageExtension } from './ExtendedImageExtension'
 import { VuetifyIconsGroups } from '~/configs/theme'
 import VuetifyIcon from '~/extensions/nativeExtensions/icons/VuetifyIcon'
 import I18nText from '~/i18n/I18nText'
 import AbstractExtension from '~/extensions/AbstractExtension'
 import ExtensionActionInterface from '~/extensions/actions/ExtensionActionInterface'
-import Vue from 'vue'
 import ExtensionActionRenderBtn from '~/extensions/actions/renders/btn/ExtensionActionRenderBtn'
-import ImageWindow from '~/extensions/nativeExtensions/image/ImageWindow.vue'
+import ImageSelector from './ImageSelector'
 
 export default class Image extends AbstractExtension {
   constructor (options) {
-    super(options, ImageOriginal)
+    super(options, ExtendedImageExtension)
   }
 
   get availableActions (): ExtensionActionInterface[] {
@@ -29,20 +28,8 @@ export default class Image extends AbstractExtension {
           },
           nativeExtensionName,
           async onClick ({ editor }) {
-            const LinkWindowComponent = Vue.extend(ImageWindow)
-            const instance = new LinkWindowComponent({
-              vuetify: Vue.prototype.tiptapVuetifyPlugin.vuetify,
-              propsData: {
-                value: true,
-                nativeExtensionName,
-                editor,
-                imageSources: options.imageSources,
-                imageSourcesOverride: options.imageSourcesOverride
-              }
-            })
-
-            instance.$mount()
-            document.querySelector('body')!.appendChild(instance.$el)
+            const selector = new ImageSelector(editor, options.fileTypes, options.maxFileSize, options.filterErrorFunc)
+            selector.open()
           }
         })
       }
