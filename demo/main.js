@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuetify, {
   // Components used in demo
-  VApp, VContent, VContainer,
+  VApp, VMain, VContainer,
   // Components used in this package
   VDialog, VCard, VCardTitle, VCardText, VCardActions, VBtn, VSpacer, VIcon, VTextField, VTooltip, VToolbar
 } from 'vuetify/lib'
@@ -30,7 +30,7 @@ MAIN_MODULE.then(({ TiptapVuetifyPlugin }) => {
     components: {
       // Components used in demo
       VApp,
-      VContent,
+      VMain,
       VContainer,
       // Components used in this package
       VDialog,

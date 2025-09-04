@@ -6,7 +6,7 @@
     >
 
     <v-app>
-      <v-content>
+      <v-main>
         <v-container>
           <h1>
             The Tiptap Editor Package
@@ -16,7 +16,7 @@
             <router-view />
           </div>
         </v-container>
-      </v-content>
+      </v-main>
     </v-app>
   </div>
 </template>
