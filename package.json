@@ -1,6 +1,6 @@
 {
   "name": "tiptap-vuetify",
-  "version": "2.24.0",
+  "version": "3.00.0",
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",
@@ -16,6 +16,7 @@
     "@tiptap/extension-history": "^2.26.1",
     "@tiptap/extension-image": "^2.26.1",
     "@tiptap/extension-link": "^2.26.1",
+    "@tiptap/extension-mention": "^2.26.1",
     "@tiptap/extension-placeholder": "^2.26.1",
     "@tiptap/extension-table": "^2.26.1",
     "@tiptap/extension-table-cell": "^2.26.1",
@@ -26,6 +27,7 @@
     "@tiptap/extension-underline": "^2.26.1",
     "@tiptap/pm": "^2.26.1",
     "@tiptap/starter-kit": "^2.26.1",
+    "@tiptap/suggestion": "2.26.1",
     "@tiptap/vue-2": "^2.26.1"
   },
   "devDependencies": {

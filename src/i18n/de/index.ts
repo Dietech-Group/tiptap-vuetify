@@ -158,6 +158,11 @@ export default {
           tooltip: 'Todo-Liste'
         }
       }
+    },
+    Mention: {
+      buttons: {
+        tooltip: 'Erwähnung'
+      }
     }
   }
 }

@@ -3,7 +3,8 @@ import Vuetify, {
   // Components used in demo
   VApp, VMain, VContainer,
   // Components used in this package
-  VDialog, VCard, VCardTitle, VCardText, VCardActions, VBtn, VSpacer, VIcon, VTextField, VTooltip, VToolbar
+  VDialog, VCard, VCardTitle, VCardText, VCardActions, VBtn, VSpacer, VIcon, VTextField, VTooltip, VToolbar,
+  VMenu, VList, VListItemGroup, VListItem
 } from 'vuetify/lib'
 import Router from 'vue-router'
 import 'vuetify/dist/vuetify.min.css'
@@ -43,7 +44,11 @@ MAIN_MODULE.then(({ TiptapVuetifyPlugin }) => {
       VIcon,
       VTextField,
       VTooltip,
-      VToolbar
+      VToolbar,
+      VMenu,
+      VList,
+      VListItemGroup,
+      VListItem
     },
     directives: {}
   })

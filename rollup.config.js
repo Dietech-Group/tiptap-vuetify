@@ -108,7 +108,8 @@ async function getConfig ({
         '@tiptap/extension-text-style': 'tiptapExtensionTextStyle',
         '@tiptap/extension-text': 'tiptapExtensionText',
         '@tiptap/extension-underline': 'tiptapExtensionUnderline',
-        '@tiptap/pm': 'tiptapPM',
+        '@tiptap/extension-mention': 'tiptapExtensionMention',
+        '@tiptap/suggestion': 'tiptapSuggestion',
         '@tiptap/starter-kit': 'tiptapStarterKit',
         '@tiptap/vue-2': 'tiptapVue2',
 
@@ -154,6 +155,8 @@ async function getConfig ({
       '@tiptap/extension-text-style',
       '@tiptap/extension-text',
       '@tiptap/extension-underline',
+      '@tiptap/extension-mention',
+      '@tiptap/suggestion',
       '@tiptap/pm',
       '@tiptap/starter-kit',
       '@tiptap/vue-2',

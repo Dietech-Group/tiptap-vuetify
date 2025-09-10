@@ -9,7 +9,6 @@
     <tiptap-vuetify
       v-model="content"
       :extensions="extensions"
-      :native-extensions="nativeExtensions"
       placeholder="Write something …"
       @keydown="onkeydown"
     />
@@ -30,7 +29,6 @@ import { MAIN_MODULE } from '../config'
 import MyCustomExtension from '../MyCustomExtension'
 import FileSelector from '../Components/FileSelector'
 
-// import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 import { common, createLowlight } from 'lowlight'
 import dockerfile from 'highlight.js/lib/languages/dockerfile'
 import 'highlight.js/styles/stackoverflow-light.css'
@@ -51,11 +49,11 @@ export default {
     //   }
     // },
     extensions: null,
-    nativeExtensions: null,
     content: `
       <h1>Yay Headlines!</h1>
       <img src="https://picsum.photos/seed/test1/100" alt="test image" title="Test Image from picsum">
       <img src="https://picsum.photos/seed/test2/100" alt="test image with highres version" title="Test Image from picsum with highres version on click" data-high-res-src="https://picsum.photos/seed/test2/1000">
+      <p><span data-type="mention" data-id="Christina Applegate"></span></p>
       <blockquote>Test quote.</blockquote>
       <p>All these <strong>cool tags</strong> are working now.</p>
       <p>
@@ -96,7 +94,7 @@ export default {
     const {
       Heading, Bold, Italic, Strike, Underline, Code, CodeBlock, Paragraph, BulletList, OrderedList, ListItem,
       Link, Blockquote, HardBreak, HorizontalRule, History, Image, TodoList, TodoItem, Table, TableCell, TableHeader,
-      TableRow
+      TableRow, Mention
     } = await MAIN_MODULE
 
     this.extensions = [
@@ -155,13 +153,24 @@ export default {
       }],
       [Link, {
         renderIn: 'bubbleMenu'
+      }],
+      [Mention, {
+        options: {
+          HTMLAttributes: {
+            class: 'mention'
+          },
+          deleteTriggerWithBackspace: true,
+          suggestion: {
+            items: ({ query }) => {
+              query = query || ''
+              return [
+                'Lea Thompson', 'Cyndi Lauper', 'Tom Cruise', 'Madonna', 'Jerry Hall', 'Joan Collins', 'Winona Ryder', 'Christina Applegate', 'Alyssa Milano', 'Molly Ringwald', 'Ally Sheedy', 'Debbie Harry', 'Olivia Newton-John', 'Elton John', 'Michael J. Fox', 'Axl Rose', 'Emilio Estevez', 'Ralph Macchio', 'Rob Lowe', 'Jennifer Grey', 'Mickey Rourke', 'John Cusack', 'Matthew Broderick', 'Justine Bateman', 'Lisa Bonet'
+              ].filter(item => item.toLowerCase().startsWith(query.toLowerCase())).slice(0, 10)
+            },
+            allowSpaces: true
+          }
+        }
       }]
-    ]
-
-    this.nativeExtensions = [
-      // CodeBlockLowlight.configure({
-      //   lowlight
-      // })
     ]
   },
   methods: {
